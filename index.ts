@@ -16,12 +16,23 @@ client.on('ready', () => {
 
 client.on('messageCreate', (message) => {
     if (message.content === 'ping') {
-        message.reply({
+        message
+        .react('⏲️')
+        .then(() => console.log(`Reacted to message '${message.content}'`))
+        .catch(console.error)
+        message
+        .reply({
             content:'pong', 
         })
+        
     }
 
     if (message.content === 'cowsay') {
+        message
+        .react('🐄')
+        .then(() => console.log(`Reacted to message '${message.content}'`))
+        .catch(console.error)
+        
         let output: string = cowsay.say({ text: 'Hello from typescript!'})
         output = `
         \`\`\`
@@ -31,6 +42,7 @@ client.on('messageCreate', (message) => {
          message.reply({
          content: output,
          })
+         
         }
     })
 
