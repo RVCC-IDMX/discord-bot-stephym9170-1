@@ -1,6 +1,7 @@
 import DiscordJS, {Intents} from 'discord.js'
 import dotenv from 'dotenv'
 import * as cowsay from 'cowsay';
+import {IOptions} from 'cowsay'
 dotenv.config()
 
 const client = new DiscordJS.Client({
@@ -33,8 +34,14 @@ client.on('messageCreate', (message) => {
         .react('🐄')
         .then(() => console.log(`Reacted to message '${message.content}'`))
         .catch(console.error)
+
+        let opts: IOptions = {
+            text: 'Hello from typescript',
+            e: '^^', 
+            f: 'snoopy'
+        };
         
-        let output: string = cowsay.say({ text: 'Hello from typescript!'})
+        let output = cowsay.say(opts);
         output = `
         \`\`\`
        ${output}
