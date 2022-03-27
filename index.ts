@@ -24,7 +24,8 @@ client.on('messageCreate', (message) => {
         .reply({
             content:'pong', 
         })
-        
+        .then(() => console.log(`Replied to message '${message.content}'`))
+         .catch(console.error)
     }
 
     if (message.content === 'cowsay') {
@@ -42,7 +43,8 @@ client.on('messageCreate', (message) => {
          message.reply({
          content: output,
          })
-         
+         .then(() => console.log(`Replied to message '${message.content}'`))
+         .catch(console.error)
         }
     })
 
