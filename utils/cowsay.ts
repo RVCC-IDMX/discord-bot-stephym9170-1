@@ -27,9 +27,5 @@ export default function (cow: string = 'random') {
     \`\`\`${output}\`\`\`
     `;
 
-    if (output.length > 2000) {
-        output = 'Darn all the cows in the barn are sleeping';
-    }
-    console.log(output);
     return output;
 }
