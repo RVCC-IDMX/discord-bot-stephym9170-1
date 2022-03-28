@@ -26,6 +26,9 @@ export default function (cow: string = 'random') {
     output = `
     \`\`\`${output}\`\`\`
     `;
+   return output;
+    }
+    
+    
 
-    return output;
-}
+
