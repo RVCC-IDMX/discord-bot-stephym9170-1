@@ -4,7 +4,7 @@ import cowsay from './utils/cowsay';
 
 dotenv.config();
 
-const PREFIX = process.env.PREFIX || 'sm#';
+const PREFIX = process.env.PREFIX || 'sm!';
 const CHANNELS = process.env.CHANNELS || null;
 
 if (!CHANNELS) {
@@ -34,8 +34,10 @@ client.on('messageCreate', (message) => {
     .slice()
     .trim()
     .split(/\s+/);
+    console.log(args)
   const command = args.shift();
-  if (message.content === 'ping') {
+  console.log(command)
+  if (command === 'ping') {
     message
       .react('⏲️')
       .then(() => console.log(`Reacted to message "${message.content}"`))
@@ -48,13 +50,13 @@ client.on('messageCreate', (message) => {
       .then(() => console.log(`Reacted to message "${message.content}"`))
       .catch(console.error);
   }
-  if (message.content === 'cowsay') {
+  if (command === 'cowsay') {
     message
       .react('🐄')
       .then(() => console.log(`Reacted to message "${message.content}"`))
       .catch(console.error);
 
-    const output = cowsay();
+    const output = cowsay(args[0]);
     message
       .reply(output)
       .then(() => console.log(`Replied to message "${message.content}"`))
