@@ -22,7 +22,7 @@ module.exports = {
             Accept: "application/json"
         }
     });
-    response = await axios.get(url) 
+    response = await axios.create(url) 
     console.log(response)
       joke = response.data;
       console.log(joke);
